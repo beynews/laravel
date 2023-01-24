@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 //route resource
+Route::resource('/posts', \App\Http\Controllers\PostController::class);
 Route::resource('/students', \App\Http\Controllers\StudentController::class);
-Route::resource('/posts', \App\Http\Controllers\StudentController::class);
