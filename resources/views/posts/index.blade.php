@@ -58,7 +58,7 @@
                                         @forelse ($posts as $post)
                                         <tr>
                                             <td class="text-center">
-                                                <img src="{{ Storage::url('public/posts/').$post->image }}" class="rounded" style="width: 150px">
+                                                <img src="{{ Storage::url('public/posts/').$post->image }}" class="rounded" style="width: 100px">
                                             </td>
                                             <td>{{ $post->title }}</td>
                                             <td>{!! $post->content !!}</td>

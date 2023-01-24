@@ -125,7 +125,7 @@ class StudentController extends Controller
             //update post without image
             $student->update([
                 'photo'   => $image->hashName(),
-                'judul'    => $request->judul,
+                'judul'   => $request->judul,
                 'number'  => $request->number,
                 'nama'    => $request->nama,
                 'email'   => $request->email,

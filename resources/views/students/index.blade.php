@@ -41,7 +41,7 @@
     <div class="container">
 
       <h2>Students Data</h2>
-      <a href="{{ route('posts.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
+      <a href="{{ route('students.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
       <table class="table">
         <thead>
           <tr>
