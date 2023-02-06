@@ -1,40 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">Members {{ $member->id }}</div>
+                <div class="card-body">
+                    <a href="{{ route('members.index') }}" class="btn btn-warning">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </a>
+                    <a href="{{ route('members.edit', $member) }}" class="btn btn-primary">
+                        <i class="fa fa-edit"></i> Edit
+                    </a>
+                    <form action="{{ route('members.destroy', $member) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </form>
 
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Member {{ $member->id }}</div>
-                    <div class="card-body">
-
-                        <a href="{{ url('/members') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/members/' . $member->id . '/edit') }}" title="Edit Member"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                        <form method="POST" action="{{ url('members' . '/' . $member->id) }}" accept-charset="UTF-8" style="display:inline">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Member" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                        </form>
-                        <br/>
-                        <br/>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $member->id }}</td>
-                                    </tr>
-                                    <tr><th> Group Id </th><td> {{ $member->group_id }} </td></tr><tr><th> Student Id </th><td> {{ $member->student_id }} </td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
+                    <table class="table mt-3">
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ $member->id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ $member->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ $member->email }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
