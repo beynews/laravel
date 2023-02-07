@@ -40,11 +40,9 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'photo'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'judul'     => 'required|min:5',
-            'number'     => 'required|min:5',
             'nama'     => 'required|min:5',
             'email'   => 'required|min:5',
-            'phone'   => 'required|min:5',
+            
         ]);
 
         $image = $request->file('photo');
@@ -52,11 +50,9 @@ class StudentController extends Controller
 
         Student::create([
             'photo'   => $image->hashName(),
-            'judul'    => $request->judul,
-            'number'  => $request->number,
             'nama'    => $request->nama,
             'email'   => $request->email,
-            'phone'   => $request->phone,
+           
         ]);
 
         return redirect()->route('students.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -65,7 +61,7 @@ class StudentController extends Controller
      public function destroy(Student $student)
     {
         //delete image
-        Storage::delete('public/students/'. $student->image);
+        Storage::delete('public/students/'. $student->photo);
 
         //delete post
         $student->delete();
