@@ -8,8 +8,11 @@ Route::get('/', function () {
 
 //route resource
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
-Route::resource('/students', \App\Http\Controllers\StudentController::class);
+Route::resource('/students', \App\Http\Controllers\StudentsController::class);
+Route::resource('/students', \App\Http\Controllers\StudentsController::class);
+Route::resource('/members', \App\Http\Controllers\MembersController::class);
+Route::resource('/groups', \App\Http\Controllers\GroupsController::class);
 
-Route::resource('members', 'MembersController');
+//Route::resource('members', 'MembersController');
 //Route::resource('students', 'StudentsController');
-Route::resource('groups', 'GroupsController');
+//Route::resource('groups', 'GroupsController');

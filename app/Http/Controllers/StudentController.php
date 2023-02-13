@@ -39,18 +39,13 @@ class StudentController extends Controller
     public function storeData(Request $request)
     {
         $this->validate($request, [
-            'photo'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nama'     => 'required|min:5',
+            'name'     => 'required|min:5',
             'email'   => 'required|min:5',
             
         ]);
 
-        $image = $request->file('photo');
-        $image->storeAs(config('app.student_images_path'), $image->hashName());
-
         Student::create([
-            'photo'   => $image->hashName(),
-            'nama'    => $request->nama,
+            'name'    => $request->name,
             'email'   => $request->email,
            
         ]);

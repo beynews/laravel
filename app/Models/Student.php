@@ -17,7 +17,7 @@ class Student extends Model
     protected $fillable = [
        
         'photo',
-        'nama',
+        'name',
         'email',
         
     ];
