@@ -131,7 +131,7 @@
             <li class="nav-item">
               <a class="nav-link" href="groups">
                 <i class="fa-solid fa-user"></i>
-                Groups
+                Dosen
               </a>
             </li>
             <li class="nav-item">
