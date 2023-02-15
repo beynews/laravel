@@ -12,12 +12,12 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            });
+        // Schema::create('students', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->timestamps();
+        //     $table->string('name')->nullable();
+        //     $table->string('email')->nullable();
+        //     });
     }
 
     /**

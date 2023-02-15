@@ -12,13 +12,13 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->integer('user_id')->unsigned();
-            $table->string('name')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            });
+        // Schema::create('groups', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->timestamps();
+        //     $table->bigInteger('user_id')->unsigned();
+        //     $table->string('name')->nullable();
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+        // });
     }
 
     /**

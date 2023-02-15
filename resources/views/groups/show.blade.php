@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
+           
 
             <div class="col-md-9">
                 <div class="card">
@@ -16,7 +16,7 @@
                         <form method="POST" action="{{ url('groups' . '/' . $group->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Group" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Group" onclick="return confirm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
                         <br/>
                         <br/>
