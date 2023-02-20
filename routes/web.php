@@ -20,7 +20,7 @@ Route::resource('/absensis', \App\Http\Controllers\AbsensisController::class);
 //Route::resource('groups', 'GroupsController');
 
 
-//Route::get('/absensi', function () {
-//    return view('absensi');
-//});
+Route::get('/attendance', function () {
+   return view('absensi');
+});
 
