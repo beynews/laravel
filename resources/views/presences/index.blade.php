@@ -45,8 +45,7 @@
                                     <td>{{ $item->student_id }}</td>
                                     <td>{{ $item->note }}</td>
                                     <td>
-                                        <a href="{{ url('/absensis/') }}" title="View Absensi"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View Absensi </button></a>
-                                        <a href="{{ url('/presences/' . $item->id) }}" title="View Presence"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                       <a href="{{ url('/presences/' . $item->id) }}" title="View Presence"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         <a href="{{ url('/presences/' . $item->id . '/edit') }}" title="Edit Presence"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                         <form method="POST" action="{{ url('/presences' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
