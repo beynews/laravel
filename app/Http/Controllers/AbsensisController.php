@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Absensi;
 use App\Models\Student;
 use App\Http\Controllers\Controller;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class AbsensisController extends Controller
@@ -20,21 +21,10 @@ class AbsensisController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-       
-            $students = Student::latest()->paginate($perPage);
-      
+        $students = Student::latest()->paginate($perPage);
+        $schedule = Schedule::all();
 
-        return view('absensi', compact('students'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('absensis.create');
+        return view('absensi', compact(['students', 'schedule']));
     }
 
     /**
@@ -46,70 +36,32 @@ class AbsensisController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->all();
+        // Mengambil inputan dari form
+        $inputAbsensi = $request->input('absensi');
+        $inputCatatan = $request->input('catatan');
+        $schedule_id = $request->input('schedule_id');
 
-        Absensi::create($requestData);
+        // Menyimpan data ke database
+        foreach ($inputAbsensi as $key => $value) {
+            $absensi = new Absensi;
+            $absensi->student_name = $key;
+            $absensi->status = $value;
+            $absensi->note = $inputCatatan[$key];
+            $absensi->schedule_id = $schedule_id;
+            $absensi->save();
+        }
 
-        return redirect('absensis')->with('flash_message', 'Absensi added!');
+        // Redirect ke halaman sukses
+        return redirect()->route('absensis.success');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * Display a success message after submitting absensi.
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function success()
     {
-        $absensi = Absensi::findOrFail($id);
-
-        return view('absensis.show', compact('absensi'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $absensi = Absensi::findOrFail($id);
-
-        return view('absensis.edit', compact('absensi'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function update(Request $request, $id)
-    {
-        $requestData = $request->all();
-
-        $absensi = Absensi::findOrFail($id);
-        $absensi->update($requestData);
-
-        return redirect('absensis')->with('flash_message', 'Absensi updated!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function destroy($id)
-    {
-        Absensi::destroy($id);
-
-        return redirect('absensis')->with('flash_message', 'Absensi deleted!');
+        return view('absensi-success');
     }
 }
