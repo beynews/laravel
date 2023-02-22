@@ -36,6 +36,7 @@ class AbsensisController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // Mengambil inputan dari form
         $inputAbsensi = $request->input('absensi');
         $inputCatatan = $request->input('catatan');
@@ -44,7 +45,7 @@ class AbsensisController extends Controller
         // Menyimpan data ke database
         foreach ($inputAbsensi as $key => $value) {
             $absensi = new Absensi;
-            $absensi->student_name = $key;
+            $absensi->student_id = $key;
             $absensi->status = $value;
             $absensi->note = $inputCatatan[$key];
             $absensi->schedule_id = $schedule_id;
@@ -52,7 +53,7 @@ class AbsensisController extends Controller
         }
 
         // Redirect ke halaman sukses
-        return redirect()->route('absensis.success');
+        return redirect()->route('groups.index');
     }
 
     /**

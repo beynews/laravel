@@ -55,11 +55,11 @@
     <h1>Form Absensi Programmer </h1>
     <form method="POST" action="{{route('absensis.store')}}">
         @csrf
-        <select name="" id="">
+        <select name="schedule_id" id="">
             @foreach($schedule as $sch)
-            <option value="{{$sch->id}}">{{$sch->note}}</option>
-        @endforeach
-      </select>
+            <option name="" value="{{$sch->id}}">{{$sch->note}}</option>
+            @endforeach
+        </select>
         <table class="table">
             <thead>
                 <tr>
@@ -74,22 +74,22 @@
                 @foreach($students as $key => $student)
                 <tr>
                     <td>{{$key+1}}</td>
-                <td>{{$student['name']}}</td>
-                <td>{{$student['class']}}</td>
-                <td>
-                    <input type="radio" name="absensi[{{$student->id}}]" value="hadir"> Hadir
-                    <input type="radio" name="absensi[{{$student->id}}]" value="sakit"> Sakit
-                    <input type="radio" name="absensi[{{$student->id}}]" value="alfa"> Alfa
-                    <input type="radio" name="absensi[{{$student->id}}]" value="izin"> Izin
-                </td>
-                <td>
-                    <input type="text" name="catatan[{{$student->id}}]">
-                </td>
+                    <td>{{$student['name']}}</td>
+                    <td>{{$student['class']}}</td>
+                    <td>
+                        <input type="radio" name="absensi[{{$student->id}}]" value="hadir"> Hadir
+                        <input type="radio" name="absensi[{{$student->id}}]" value="sakit"> Sakit
+                        <input type="radio" name="absensi[{{$student->id}}]" value="alfa"> Alfa
+                        <input type="radio" name="absensi[{{$student->id}}]" value="izin"> Izin
+                    </td>
+                    <td>
+                        <input type="text" name="catatan[{{$student->id}}]">
+                    </td>
                 </tr>
                 @endforeach
-                </tbody>
-                </table>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('absensis', function (Blueprint $table) {
             $table->id();
-            $table->shcedule_id();
-            $table->student_id();
-            $table->presence();
-            $table->note();
+            $table->integer('schedule_id');
+            $table->integer('student_id');
+            $table->string('status');
+            $table->string('note');
+            $table->timestamps();
+
    
         });
     }
