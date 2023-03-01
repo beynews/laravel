@@ -1,12 +1,36 @@
-<form action="{{ route('quizzes.store') }}" method="post">
-    @csrf
-    <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title">
+@extends('layouts.admin')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+         
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">Create New Quizzes</div>
+                    <div class="card-body">
+                        <a href="{{ url('/quizzes') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <br />
+                        <br />
+
+                        @if ($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        <form method="POST" action="{{ url('/quizzes') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+
+                            @include ('quizzes.form', ['formMode' => 'create'])
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
-    </div>
-    <button type="submit">Create Quiz</button>
-</form>
+@endsection

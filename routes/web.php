@@ -15,7 +15,7 @@ Route::resource('/groups', \App\Http\Controllers\GroupsController::class);
 Route::resource('/presences',\App\Http\Controllers\PresencesController::class);
 Route::resource('/schedules',\App\Http\Controllers\SchedulesController::class);
 Route::resource('/absensis', \App\Http\Controllers\AbsensisController::class);
-Route::resource('/quizzes', \App\Http\Controllers\QuizController::class);
+Route::resource('/quizzes', \App\Http\Controllers\QuizzesController::class);
 
 //Route::resource('members', 'MembersController');
 //Route::resource('students', 'StudentsController');

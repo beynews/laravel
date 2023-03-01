@@ -1,13 +1,37 @@
-<form action="{{ route('quizzes.update', $quiz->id) }}" method="post">
-    @csrf
-    @method('PUT')
-    <div>
-        <label for="title">Title: Hehehe</label>
-        <input type="text" id="title" name="title" value="{{ $quiz->title }}">
+@extends('layouts.admin')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+          
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">Edit Quizzes #{{ $quizzes->id }}</div>
+                    <div class="card-body">
+                        <a href="{{ url('/quizzes') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <br />
+                        <br />
+
+                        @if ($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        <form method="POST" action="{{ url('/quizzes/' . $quizzes->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
+                            {{ csrf_field() }}
+
+                            @include ('quizzes.form', ['formMode' => 'edit'])
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="description">Description: Huu</label>
-        <textarea id="description" name="description">{{ $quiz->description }}</textarea>
-    </div>
-    <button type="submit">Update Quiz</button>
-</form>
+@endsection
