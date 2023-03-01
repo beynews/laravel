@@ -46,7 +46,11 @@ class QuizzesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->all();
+
+        Quizzes::create($requestData);
+        
+        return redirect('quizzes')->with('flash_message', 'Quizzes added!');
     }
 
     /**
