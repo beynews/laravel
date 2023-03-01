@@ -49,7 +49,7 @@ class QuizzesController extends Controller
         $requestData = $request->all();
 
         Quizzes::create($requestData);
-        
+
         return redirect('quizzes')->with('flash_message', 'Quizzes added!');
     }
 
@@ -61,7 +61,9 @@ class QuizzesController extends Controller
      */
     public function show($id)
     {
-        //
+      $quizzes = Quizzes::findOrFail($id);
+
+        return view('quizzes.show', compact('quizzes'));
     }
 
     /**
@@ -71,21 +73,20 @@ class QuizzesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
-    }
+{
+    $quizzes = Quizzes::find($id);
+    return view('quizzes.edit', compact('quizzes'));
+}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+public function update(Request $request, $id)
+{
+    $requestData = $request->all();
+
+    $quizzes = Quizzes::find($id);
+    $quizzes->update($requestData);
+
+    return redirect('quizzes')->with('flash_message', 'Quizzes updated!');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -94,7 +95,10 @@ class QuizzesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-    }
+{
+    Quizzes::find($id)->delete();
+
+    return redirect('quizzes')->with('flash_message', 'Quizzes deleted!');
+}
+
 }

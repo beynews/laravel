@@ -36,6 +36,7 @@
                                 <th>Jawaban_2</th>
                                 <th>Jawaban_3</th>
                                 <th>Jawaban_4</th>
+                                 <th>Jawaban_Benar</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 <td>{{ $item->answer_2 }}</td>
                                 <td>{{ $item->answer_3 }}</td>
                                 <td>{{ $item->answer_4 }}</td>
+                                   <td>{{ $item->jawaban_benar }}</td>
 
                                 <td>
                                     <a href="{{ url('/quizzes/' . $item->id) }}" title="Lihat Kuis"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Lihat</button></a>

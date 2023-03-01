@@ -16,10 +16,45 @@
                         <form method="POST" action="{{ url('quizzes' . '/' . $quizzes->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Quizzes" onclick="return confirm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Quizzes" onclick="return confirm('Are you sure you want to delete this quiz?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
                         <br/>
                         <br/>
+
+                        <div class="card">
+                            <div class="card-header">{{ $quizzes->question }}</div>
+                            <div class="card-body">
+                                <form method="POST" action="{{ url('/quizzes/' . $quizzes->id) }}" accept-charset="UTF-8">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer_1" value="1">
+                                        <label class="form-check-label" for="answer_1">
+                                            {{ $quizzes->answer_1 }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer_2" value="2">
+                                        <label class="form-check-label" for="answer_2">
+                                            {{ $quizzes->answer_2 }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer_3" value="3">
+                                        <label class="form-check-label" for="answer_3">
+                                            {{ $quizzes->answer_3 }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer_4" value="4">
+                                        <label class="form-check-label" for="answer_4">
+                                            {{ $quizzes->answer_4 }}
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
 
                         <div class="table-responsive">
                             <table class="table">
@@ -27,9 +62,11 @@
                                     <tr>
                                         <th>ID</th><td>{{ $quizzes->id }}</td>
                                     </tr>
-                                    <tr><th> question </th><td> {{ $quizzes->id }} </td></tr><tr><th> answer </th><td> {{ $quizzes->answer }} </td></tr>
+                                    <tr><th>Question</th><td> {{ $quizzes->question }} </td></tr>
+                                    <tr><th>Answer</th><td> {{ $quizzes->jawaban_benar }} </td></tr>
                                 </tbody>
                             </table>
+
                         </div>
 
                     </div>

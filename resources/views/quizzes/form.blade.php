@@ -23,6 +23,11 @@
     <input class="form-control" name="answer_4" type="text" id="answer_4" value="{{ isset($quizzes->answer_4) ? $quizzes->answer_4 : ''}}" >
     {!! $errors->first('question', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('jawaban_benar') ? 'has-error' : ''}}">
+    <label for="jawaban_benar" class="control-label">{{ 'Jawaban_benar' }}</label>
+    <input class="form-control" name="jawaban_benar" type="text" id="jawaban_benar" value="{{ isset($quizzes->jawaban_benar) ? $quizzes->jawaban_benar : ''}}" >
+    {!! $errors->first('question', '<p class="help-block">:message</p>') !!}
+</div>
   <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
